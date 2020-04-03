@@ -81,7 +81,7 @@ def get_gmali_information(block_addresses):
         mail_title = mail_title[0][0].decode('utf-8')
         mail_body = payload.split("</div>")
 
-        for address in sender_addresses:
+        for address in block_addresses:
             if address != mail_address:
                 send_message = "\n【メール受信】\n差出人: "
                 send_message += mail_address
