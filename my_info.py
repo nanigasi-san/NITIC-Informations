@@ -3,4 +3,4 @@
 access_token = ""
 username = ""
 password = ""
-sender_addresses = [""]
+block_addresses = [""]
