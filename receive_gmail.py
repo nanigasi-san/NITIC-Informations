@@ -25,7 +25,7 @@ def get_gmali_information(sender_addresses):
     imapclient.login(username, password)
 
     imapclient.select()
-    typ, data = imapclient.search(None, "ALL")
+    typ, data = imapclient.search(None, "UNSEEN")
     datas = data[0].split()
     fetch_num = 1
     if (len(datas)-fetch_num) < 0:
