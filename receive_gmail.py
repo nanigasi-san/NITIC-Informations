@@ -78,7 +78,10 @@ def get_gmali_information(block_addresses):
         mail_address = mail_address.replace('>', "")
         mail_address = mail_address[1:]
         mail_title = email.header.decode_header(msg.get('Subject'))
-        mail_title = mail_title[0][0].decode('utf-8')
+        try:
+            mail_title = mail_title[0][0].decode('utf-8')
+        except:
+            mail_title = "can't read title"
         mail_body = payload.split("</div>")
 
         for address in block_addresses:
