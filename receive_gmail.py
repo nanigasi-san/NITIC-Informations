@@ -73,10 +73,13 @@ def get_gmali_information(block_addresses):
                 if charset is not None:
                     payload = payload.decode(charset, "ignore")
         mail_address = email.header.decode_header(msg.get('From'))
-        mail_address = mail_address[1][0].decode('utf-8')
-        mail_address = mail_address.replace('<', "")
-        mail_address = mail_address.replace('>', "")
-        mail_address = mail_address[1:]
+        try:
+            mail_address = mail_address[1][0].decode('utf-8')
+            mail_address = mail_address.replace('<', "")
+            mail_address = mail_address.replace('>', "")
+            mail_address = mail_address[1:]
+        except:
+            mail_address = "can't read address"
         mail_title = email.header.decode_header(msg.get('Subject'))
         try:
             mail_title = mail_title[0][0].decode('utf-8')
