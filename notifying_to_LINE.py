@@ -1,5 +1,6 @@
 import argparse
 import requests
+import my_info
 
 def notifying(message, image_path="No image"):
     """
@@ -15,7 +16,7 @@ def notifying(message, image_path="No image"):
     """
 
     line_notify_api = 'https://notify-api.line.me/api/notify'
-    line_notify_token = "write your token"
+    line_notify_token = my_info.access_token
     headers = {'Authorization': 'Bearer ' + line_notify_token}
     payload = {'message': message}
     if image_path == "No image":
@@ -23,5 +24,3 @@ def notifying(message, image_path="No image"):
     else:
         files = {"imageFile": open(image_path, "rb")}
         requests.post(line_notify_api, data=payload, headers=headers, files=files)
-
-notifying(message="test", image_path="C:\\Users\\hoge\\Pictures\\Screenshots\\me.png")
