@@ -5,7 +5,7 @@ from email.header import decode_header, make_header
 
 import my_info
 
-def get_gmali_information(sender_addresses):
+def get_gmali_information(block_addresses):
     """
     特定のアドレスからの新着メールがあるか確認し、あれば通知用のメッセージを返す
     参考: https://qiita.com/stkdev/items/a44976fb81ae90a66381
@@ -82,7 +82,7 @@ def get_gmali_information(sender_addresses):
         mail_body = payload.split("</div>")
 
         for address in sender_addresses:
-            if address == mail_address:
+            if address != mail_address:
                 send_message = "\n【メール受信】\n差出人: "
                 send_message += mail_address
                 send_message += "\n件名: "
