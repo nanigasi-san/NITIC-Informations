@@ -6,6 +6,21 @@ from email.header import decode_header, make_header
 import my_info
 
 def get_gmali_information(sender_addresses):
+    """
+    特定のアドレスからの新着メールがあるか確認し、あれば通知用のメッセージを返す
+    参考: https://qiita.com/stkdev/items/a44976fb81ae90a66381
+          https://qiita.com/takey/items/1498af9e1113eeb7bb21
+
+    Parameters
+    ----------
+    sender_addresses : list
+        反応するアドレスのリスト。ここにないアドレスからメールが来てもスルーされる。
+
+    Returns
+    -------
+    send_message : string
+        通知用の文字列。
+    """
     host = "imap.gmail.com"
     nego_combo = ("ssl", 993)
 
